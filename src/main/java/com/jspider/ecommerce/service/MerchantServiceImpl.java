@@ -11,7 +11,7 @@ import com.jspider.ecommerce.repository.CustomerRepository;
 import com.jspider.ecommerce.repository.MerchantRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class MerchantServiceImpl implements MerchantService {
 	@Autowired
 	AdminRepository adminRepository;
 	@Autowired
@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public String register(UserDto userDto, Model model) {
 		model.addAttribute("userDto", userDto);
-		return "customer-register.html";
+		return "merchant-register.html";
 	}
 
 	@Override
@@ -33,11 +33,11 @@ public class CustomerServiceImpl implements CustomerService {
 		if (adminRepository.existsByEmail(userDto.getEmail()) || customerRepository.existsByEmail(userDto.getEmail())
 				|| merchantRepository.existsByEmail(userDto.getEmail()))
 			result.rejectValue("email", "error.email", "* Email Already Exists");
-		
+
 		if (result.hasErrors()) {
-			return "customer-register.html";
+			return "merchant-register.html";
 		}
-		
+
 		return "redirect:/";
 	}
 }
