@@ -52,4 +52,5 @@ public class UserDto {
 	public void setTerms(boolean terms) {
 		this.terms = terms;
 	}
+	
 }
